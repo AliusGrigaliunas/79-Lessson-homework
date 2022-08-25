@@ -1,12 +1,19 @@
 import App from './components/app';
-import cars from './data/cars';
-import Models from './data/models';
-import brands from './data/brands';
-import CarsCollection from './helpers/cars-collection';
+import Table from './components/table';
 
 const app = new App('#root');
 app.initialize();
 
-const test = new CarsCollection({ car: cars, model: Models, brand: brands });
+const test = new Table({
+    title: 'Visos mašinos pardavimui',
+    columns: ['Pirmas', 'Antras', 'Trečias', 'Ketvirtas', 'penktas'],
+    rowsData: [
+        ['1', 'Bananai', '0.89', 'Skanūs', 'Vaisiai, Maistas'],
+        ['2', 'Obuoliai', '1.89', 'Skanūs', 'Vaisiai, Maistas'],
+        ['3', 'Mandarinai', '3.89', 'Skanūs', 'Vaisiai, Maistas'],
+        ['4', 'Kėglis', '99.89', 'Skanūs', 'Pramogos'],
+        ['5', 'Vanduo', '0.69', 'Skanūs', 'Gėrimai'],
+    ],
+});
 
-console.table(test.allcars);
+console.log(test.htmlElement);
