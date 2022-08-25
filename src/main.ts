@@ -9,6 +9,4 @@ app.initialize();
 
 const test = new CarsCollection({ car: cars, model: Models, brand: brands });
 
-console.log(test);
-
 console.table(test.allcars);
