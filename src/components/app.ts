@@ -2,6 +2,7 @@ import CarsCollection from '../helpers/cars-collection';
 import cars from '../data/cars';
 import Models from '../data/models';
 import brands from '../data/brands';
+import Table from './table';
 
 class App {
   private htmlElement: HTMLElement;

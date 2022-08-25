@@ -26,15 +26,15 @@ class Table<T extends string[]> {
 
         this.htmlElement = document.createElement('table');
 
+        this.htmlElement.className = 'table table-striped';
+
         this.thead = document.createElement('thead');
+
+        this.thead.className = 'table-dark';
 
         this.tbody = document.createElement('tbody');
 
         this.initialize();
-
-        console.groupCollapsed('no');
-        console.log(this.tbody, this.thead);
-        console.groupEnd();
 }
 
     public initialize() {
@@ -42,11 +42,22 @@ class Table<T extends string[]> {
             throw new Error('skaičiai Neatitinka jūsų lūkesčių.');
         }
         this.thead.innerHTML = `${
-            this.props.columns.map((column) => `<th>${column}</th>`).join('')
+            this.props.columns
+                .map((column) => `<th>${column}</th>`)
+                    .join('')
         }`;
-        this.tbody.innerHTML = '';
+        this.tbody.innerHTML = `${
+            this.props.rowsData
+                .map((row) => `<tr>${row
+                    .map((rowElement) => `<td>${rowElement}</td>`)
+                        .join('')}</tr>`)
+                            .join('')
+        }`;
 
-        console.log(this.props.columns);
+        this.htmlElement.innerHTML = `
+        ${this.thead.outerHTML}
+        ${this.tbody.outerHTML}
+        `;
     }
 }
 export default Table;
