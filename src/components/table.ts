@@ -8,8 +8,6 @@ class Table<T extends string[]> {
     private static checkCompatability<T extends string[]>(
         props: TableProps<T>,
 ): boolean {
-    const columnNumber = props.columns.length;
-    if (columnNumber !== props.rowsData.length) return false;
     return props.rowsData.every((row) => row.length === props.columns.length);
     }
 
