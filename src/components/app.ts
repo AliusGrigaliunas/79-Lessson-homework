@@ -4,6 +4,7 @@ import Models from '../data/models';
 import brands from '../data/brands';
 import Table from './table';
 import stringifyProps from '../helpers/stringify-props';
+import SelectField, { SelectProps } from './SelectField';
 
 class App {
   private htmlElement: HTMLElement;
@@ -11,6 +12,8 @@ class App {
   carsCollection: CarsCollection;
 
   private carsTable: Table<[string, string, string, string, string]>;
+
+  private SelectField: SelectProps[];
 
   constructor(selector: string) {
     const foundElement = document.querySelector<HTMLElement>(selector);
@@ -36,12 +39,13 @@ class App {
       columns: ['Kodas', 'Kaina', 'Metai', 'Automobilio gamintojas', 'Modelis'],
       rowsData,
   });
+    this.SelectField = new SelectField([{ title: 'blah', information: 'blah' }]);
   }
 
   initialize = (): void => {
     const container = document.createElement('div');
     container.className = 'm-5';
-    container.append(this.carsTable.htmlElement);
+    container.append(this.SelectField.htmlElement, this.carsTable.htmlElement);
     this.htmlElement.append(container);
   };
 }
